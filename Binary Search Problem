@@ -1,7 +1,26 @@
+link: https://leetcode.com/problems/binary-search/
+
 Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 You must write an algorithm with O(log n) runtime complexity.
 
-link: https://leetcode.com/problems/binary-search/
+
+Input: nums = [-1,0,3,5,9,12], target = 0 
+#out target is 0 
+#we know indexing starts from 0 so giving left pointer  index as 0 and right pointer as 6-1=5 or length of arr -1 
+now binary search mainly helps in reducing the area so search 
+so we will search like 
+
+ while left<=right:                    #0<=5 TRUE                                     #0<=1                            #1<=1 TRUE
+            mid=(left+right)//2        #mid=0+5/2=2                                   #0+1/2 = 0 <-- index number      #1+1/2=1  
+                                                                                      #nums[0]=-1                      #nums[1]=0
+            if nums[mid]==target:      #nums[2] i.e 3 ==0 false                       -1 ==0 false                     #0=0 TRUE
+                return mid
+            elif nums[mid]>target:     #3>0 TRUE                                      -1>0 false 
+                right=mid-1            #RIGHT=2-1 = 1 
+            #moving right pointer to the left and decresing the search space
+            else:
+                left=mid+1             #new search space [-1,0,]                       -1<0 TRUE so, left=mid+1 =0+1=1 
+        return -1
 
 Solution:
 class Solution(object):
