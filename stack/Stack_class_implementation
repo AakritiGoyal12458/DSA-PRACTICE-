@@ -1,0 +1,83 @@
+#include<iostream>
+using namespace std;
+
+
+class Stack{
+    
+    public: 
+    int *arr;
+    int size;
+    int top;
+    
+    Stack(int size){
+       this->size=size;
+       arr = new int[size];
+       top=-1;
+    }
+    void push(int element){
+        //1 2 3 4 5 
+        //size = 6 top=-1
+        if(size-top>1){ 
+            top++;
+            arr[top]=element; 
+            cout<<arr[top]<<" is added to stack\n";
+        }
+        else{
+            cout<<"stack overflow\n";
+        }
+    }
+    
+    void pop(){
+        if(top>-1){
+            top--;
+        }
+        else{
+            cout<<"stack underflow\n";
+        }
+    }
+    
+    int peek(){
+        if(top>-1){
+            
+            return arr[top];
+        }
+        else{
+            return 0;
+        }
+        
+    }
+    
+    bool isempty(){
+        if(top>-1 and top<size){
+            cout <<"stack is not empty \n" ; 
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+};
+int main(){
+    Stack s(3);
+    cout<< "top elelment is "<< s.peek() <<"\n";
+    s.push(1);
+    cout<< "top elelment is "<< s.peek()<<"\n";
+    s.push(2);
+    cout<< "top elelment is "<< s.peek()<<"\n";
+    s.push(3);
+    cout<< "top elelment is "<< s.peek()<<"\n";
+    s.push(4);
+    cout<< "top elelment is "<< s.peek()<<"\n";
+    s.pop();
+    cout<< "after 1st pop top elelment is "<< s.peek()<<"\n";
+    s.isempty();
+    s.pop();
+    cout<< "after 2nd pop top elelment is "<< s.peek()<<"\n";
+    s.isempty();
+    s.pop();
+    cout<< "after 3rd pop top elelment is "<< s.peek()<<"\n";
+    s.isempty();
+    s.pop();
+    
+}
+
