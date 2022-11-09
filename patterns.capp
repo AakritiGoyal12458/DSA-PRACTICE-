@@ -1,0 +1,138 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int number;
+    cin>>number;
+    cout<<"enter a number";
+    for(int i = 1 ; i<=number;i++)
+    {
+        for(int j = 1 ; j<=number;j++)
+        {
+            cout<<"*";       
+        }
+    cout<<endl;
+    }   
+    return 0;
+}
+
+o/p cout<<"*";
+enter a number4
+****
+****
+****
+****
+
+o/p cout<<"i";
+1111
+2222
+3333
+4444
+
+o/p cout<<"j";
+1234
+1234
+1234
+1234
+
+o/p cout<<number-j+1 ;
+4321
+4321
+4321
+4321
+
+i/pcount=1 
+cout<<count<<" ";
+count++;
+o/p 
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 16 
+
+i/p : 
+char ch='A'+i-1;
+cout<<ch;
+o/p : 
+enter a number5
+AAAAA
+BBBBB
+CCCCC
+DDDDD
+EEEEE
+
+i/p:
+char ch='A'+j-1;
+cout<<ch;
+o/p: 
+enter a number5
+ABCDE
+ABCDE
+ABCDE
+ABCDE
+ABCDE
+
+i/p
+char ch='A';
+cout<<ch;
+ch=ch+1;
+o/p
+enter a number4
+ABCD
+EFGH
+IJKL
+MNOP
+
+
+Triangle pattern :- 
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout<<"enter a number";
+    int number;
+    cin>>number;
+    for(int i = 1 ; i<=number;i++)
+    {
+        for(int j = 1 ; j<=i;j++)
+        {
+            cout<<"a";
+        }
+    cout<<endl;
+    }
+    return 0;
+}
+
+o/p
+enter a number6
+a
+aa
+aaa
+aaaa
+aaaaa
+aaaaaa
+
+i/p : cout<<i;
+o/p 
+enter a number4
+1
+22
+333
+4444
+
+i/p : cout<<i-j+1;
+o/p : 
+enter a number7
+1
+21
+321
+4321
+54321
+654321
+7654321
+
+
+            
