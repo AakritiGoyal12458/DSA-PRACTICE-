@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int countPrimes(int n) {
+        if(n>=2)
+        {
+            vector<bool> arr(n,false);
+         
+            int j=2; 
+            int cont =0;
+            while(j<n)
+            {
+                if(arr[j]==false)//prime
+                { 
+                    int i=2;
+                    while((j*i)<n)
+                    {
+                         arr[j*i]=true;
+                         
+                         i++;
+                    }
+                    // cont++;
+                }
+                j++;
+            }
+            for(int i=0;i<n;i++)
+            {
+                // cout<<i<<"and"<<arr[i] << endl;
+                if(arr[i]==false)
+                {
+                   
+                    cont++;
+                }
+                //cout<<arr[i];
+            }
+            return cont-2;
+            
+        }
+        return 0;
+    }
+};
