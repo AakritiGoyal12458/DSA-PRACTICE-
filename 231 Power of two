@@ -1,0 +1,28 @@
+https://leetcode.com/problems/power-of-two/solutions/3132840/beats-55-6/?orderBy=newest_to_oldest
+
+class Solution {
+public:
+    bool isPowerOfTwo(int n) 
+    { 
+        if(n==1)
+        {
+            return true;
+        }
+        else{
+            int num = 1 ;
+            for(int x=1 ; x<=31 && num<INT_MAX/2 ; x++)
+            {
+               
+                    num=2*num;     
+                cout<<num<<endl;
+                
+                if(n==num)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+};
