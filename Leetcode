@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int distanceBetweenBusStops(vector<int>& distance, int start, int destination) 
+    {
+        int  min=0;
+        int p=0,q=0;
+        if(destination>start)
+        {
+            // for(int i=start;i<destination;i++)
+            // {
+            //      p= distance[i]+p;
+            //      cout<<p<<endl;
+            // }
+            // for(int i=destination;i<distance.size() ;i++)
+            // {
+            //      q= distance[i]+q;
+            //      cout<<q<<en
