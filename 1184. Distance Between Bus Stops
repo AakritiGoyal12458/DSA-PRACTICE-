@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int distanceBetweenBusStops(vector<int>& distance, int start, int destination) 
+    {
+        int sum1=0,sum2=0,total=0;
+        //total 
+        for (int i=0; i<=distance.size()-1;i++)
+        {
+            total=total+distance[i];
+        }
+        //clockwise 
+        if (start<destination)
+        {
+            for (int i=start ; i<destination;i++)
+            {
+                sum1=sum1+distance[i];
+            }
+        }
+        else
+        {
+            for (int i=destination ; i<start;i++)
+            {
+                sum1=sum1+distance[i];
+            }
+        }    
+        //counterclockwise
+        sum2=total-sum1;
+        if(sum1>sum2)
+            return sum2;
+        else
+            return sum1;    
+    }
+};
