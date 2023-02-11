@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int findComplement(int num) {
+        int mask = 0 ; 
+        int m = num ;
+
+        while(m>0)//count number of digits and add 1 
+        {
+            // cout<<mask<<"\n";
+            mask=mask<<1|1;
+            
+            m=m>>1;
+            cout<<m<<"\n";
+        }
+
+        m=(~num & mask);
+
+        return m ;
+
+    }
+};
