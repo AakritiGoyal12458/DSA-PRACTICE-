@@ -1,0 +1,46 @@
+string reverseString(string str)
+{
+    string output1;
+    string output;
+    string new1;
+    for(int i =str.length() ;i>=0 ; i--)
+    {
+        if(str[i]== ' ' && i!=0 )
+        {
+            for (int j = new1.length(); j>=0 ; j--) 
+              {
+                output.push_back(new1[j]);  
+              }
+              new1.erase();
+            if(str[i-1] != ' ' )
+            {
+              
+              output.push_back(str[i]);
+            }
+            
+        }
+        else
+        {
+                new1.push_back(str[i]);
+        }
+        
+    }
+    for (int j = new1.length(); j>=0 ; j--) 
+    {
+            output.push_back(new1[j]);  
+    }
+
+    if (output[0]==' ')
+    {
+       for(int i=1;i<=output.length();i++)
+       {
+           output1.push_back(output[i]);
+       }
+       return output1;
+    }
+    else if( output[output.length()-1]==' ')
+    {
+        output.erase(output.length()-1);
+    }
+    return output;
+}
