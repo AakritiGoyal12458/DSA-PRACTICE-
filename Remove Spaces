@@ -1,3 +1,5 @@
+//remove spaces
+
 #include <bits/stdc++.h> 
 string replaceSpaces(string &str){
 	string temp;
