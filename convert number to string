@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+void convert_to_word(int n, string arr[])
+{
+    int i;string word;
+    if (n==0)
+    {
+        return ;
+    }
+    i=n%10;
+    n=n/10;
+    convert_to_word( n, arr);
+    cout<<arr[i]<< " " ;
+    
+}
+
+int main() {
+    //given 4 2 1 print four two one
+    string arr[10]={"zero","one","two","three","four","five","six","seven","eight","nine"};
+    int n ;
+    cout<<"enter the number ";
+    cin>>n;
+    convert_to_word(n,arr);
+    return 0;
+}
