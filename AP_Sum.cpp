@@ -10,9 +10,11 @@ int AP(int n ){
 }
 int main()
 {
-    int n ; 
-    cout<<"Enter value of n ";
-    cin>>n;
-    cout<<"sum of n Terms of AP IS: "<<AP(n);
+    
+    
+    int num ; 
+    cout<<"Enter value of num";
+    cin>>num;
+    cout<<"sum of n Terms of AP IS: "<<AP(num);
     return 0;
 }
