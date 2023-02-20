@@ -1,0 +1,36 @@
+
+#include <iostream>
+
+using namespace std;
+
+//check sorted or not 
+bool sorted(int *arr,int size)
+{
+    if(size==0 || size==1)
+    {
+        return true ;
+    }
+    if(arr[0]>arr[1])
+    {
+        return false;
+    }
+    else
+    {
+        bool ans= sorted(arr+1,size-1);
+        return ans;
+    }
+}
+int main()
+{
+    int arr[5]={1,2,3,8,5};
+    int size = 5 ; 
+    if (sorted(arr,size))
+    {
+        cout<<"sorted";
+    }
+    else
+    {
+        cout<<"not sorted";
+    }
+    return 0;
+}
