@@ -1,0 +1,53 @@
+//find an element in an array with recursion binary serach
+
+#include <iostream>
+
+using namespace std;
+
+bool find_key(int *arr,int key,int start,int end)
+{
+    if(start>end)
+    {
+        return false;
+    }
+
+    int mid=(start+end)/2;
+    if(arr[mid]==key)
+    {
+        return true;
+    }  
+    else if(arr[mid]<key)
+    {
+        bool s= find_key(arr,key,mid+1,end);
+        return s;
+    }
+    else 
+    {
+        bool n = find_key(arr,key,start,mid-1);
+
+         return n;
+    }
+   
+    
+    
+}
+
+int main()
+{
+    int arr[5]={1,2,4,7,8};
+    int key = 200;
+    int size=5;
+    int start = 0 ;
+    int end=size-1;
+    
+    if(find_key(arr,key,start,end))
+    {
+        cout<<"found";
+    }
+    else
+    {
+        cout<<"not found";
+    }
+
+    return 0;
+}
