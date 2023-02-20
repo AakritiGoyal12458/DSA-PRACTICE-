@@ -1,0 +1,39 @@
+//find an element in an array with recursion
+
+#include <iostream>
+
+using namespace std;
+
+bool find_key(int *arr,int key,int size)
+{
+    if(size==0)
+    {
+        return false;
+    }
+    if (arr[0]==key)
+    {
+        return true;    
+    }
+    
+    int ans = find_key(arr+1, key,size-1);
+    return ans;
+    
+}
+
+int main()
+{
+    int arr[5]={2,4,7,8,0};
+    int key = 48 ;
+    int size=5;
+    
+    if(find_key(arr,key,size))
+    {
+        cout<<"found";
+    }
+    else
+    {
+        cout<<"not found";
+    }
+
+    return 0;
+}
