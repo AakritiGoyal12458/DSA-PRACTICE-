@@ -1,0 +1,31 @@
+//swap ltters in string through recursion 
+#include <iostream>
+
+using namespace std;
+
+string reversestring(string word,int start,int end)
+{
+    
+  
+    if(start<=end)
+    {
+        cout<<"hey"<<endl;   
+        
+        swap(word[start],word[end]);
+        word = reversestring(word,start+1,end-1);
+    }
+    
+    return word;
+    
+  
+}
+int main()
+{
+    string name="aakriti";
+    int start=0;
+    int end=name.length()-1;
+    
+    cout<<reversestring(name,start,end);
+
+    return 0;
+}
