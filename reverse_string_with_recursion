@@ -3,21 +3,17 @@
 
 using namespace std;
 
-string reversestring(string word,int start,int end)
+void reversestring(string &word,int start,int end)
 {
-    
-  
-    if(start<=end)
+    if(start>end)
     {
-        cout<<"hey"<<endl;   
-        
-        swap(word[start],word[end]);
-        word = reversestring(word,start+1,end-1);
+         return;
     }
-    
-    return word;
-    
-  
+    swap(word[start],word[end]);
+    start++;
+    end--;
+    reversestring(word,start,end);
+//n-i-1 instead of j 
 }
 int main()
 {
@@ -25,7 +21,8 @@ int main()
     int start=0;
     int end=name.length()-1;
     
-    cout<<reversestring(name,start,end);
+    reversestring(name,start,end);
+    cout<<name;
 
     return 0;
 }
