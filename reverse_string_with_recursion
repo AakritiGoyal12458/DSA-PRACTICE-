@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 void reversestring(string &word,int start,int end)
 {
     if(start>end)
