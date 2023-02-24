@@ -1,0 +1,35 @@
+//check palindrome 
+//abba 
+#include <iostream>
+
+using namespace std;
+
+bool check_palindrome(string any , int end,int start )
+{
+ 
+    if(start>end)
+    {
+        return true;
+    }
+    if(any[start]!=any[end])
+    {
+        return false; 
+    }
+    
+    bool p = check_palindrome( any , end -1 , start +1 );
+    
+    return p ; 
+    
+}
+
+int main()
+{
+    string word="abbnna";
+    int size=word.length();
+    int start=0 ; 
+    int end = size-1;
+    bool ans = check_palindrome(word,end,start);
+    cout<<ans; 
+
+    return 0;
+}
