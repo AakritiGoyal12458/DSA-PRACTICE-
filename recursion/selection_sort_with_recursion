@@ -1,0 +1,42 @@
+// selection_sort  using recursion 
+#include <iostream>
+
+using namespace std;
+
+void selection_sort(int *arr,int n,int start)
+{
+    //find_minimum and swap 
+    if(start>n)
+    {
+        return;
+    }
+    
+    int min=start;
+    for(int i = start ; i < n ; i ++)
+    {
+        
+        if(arr[i]<arr[min])
+        {
+            min=i;
+        }
+        cout<<arr[min]<<endl;
+        
+    }
+    cout<<start<<" end"<<endl;
+    
+    swap(arr[start],arr[min]);
+    
+    selection_sort(arr,n,start+1);
+
+}
+int main()
+{
+    int arr[5]={12,11,13,5,6}; 
+    
+    selection_sort(arr,5,0);
+    for(int i = 0; i<5;i++)
+    {
+    cout<<arr[i]<<" ";
+    }
+    return 0;
+}
