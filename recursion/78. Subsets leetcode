@@ -1,0 +1,32 @@
+class Solution {
+public:
+
+    void find_subsets(vector<int>& nums , int start  ,vector<vector<int>> &ans ,vector<int> output)
+    {
+        if(start>=nums.size())
+        {
+            ans.push_back(output);
+            return ;
+        }
+
+        //exclude
+        find_subsets(nums,start+1,ans,output);
+
+        //include
+        int element=nums[start];
+        output.push_back(element);
+        find_subsets(nums,start+1,ans,output);
+
+        
+    }
+
+    vector<vector<int>> subsets(vector<int>& nums) 
+    {
+        vector<vector<int>> ans ; 
+        vector<int> output ; 
+
+        find_subsets(nums,0,ans,output);
+
+        return ans;
+    }
+};
