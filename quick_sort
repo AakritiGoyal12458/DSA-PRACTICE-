@@ -1,0 +1,76 @@
+#include <iostream>
+
+using namespace std;
+//4,8,1,9,3
+//1,8,4,9,5
+
+int sort(int *arr , int start , int end)
+{
+    int pivot=arr[start];
+    int count = 0 ;//to count number of element smaller 
+    for(int i = start+1; i<=end;i++)//4,8,1,9,3
+    {
+        if ( arr[i]<arr[start])
+        {
+            count++;
+        }
+    }
+    
+    cout<<count<<endl;
+    int partition = start+count;
+    
+    swap(arr[start],arr[count+start]);
+    
+    int i=start; 
+    int j=end;
+    
+    while( i<partition && j>partition)
+    {
+        while(arr[i]<pivot) 
+        {
+            i++;
+        }
+        while(arr[j]>pivot)
+        {
+            j--;
+        }
+        if(arr[i]>pivot && arr[j]<pivot)
+        {
+            swap(arr[i],arr[j]);
+            i++;
+            j--;
+        }
+        
+    }
+    
+    return partition;
+    
+    
+    
+}
+void quicksort(int *arr,int start,int end)
+{
+    if(start>=end)
+    {
+        return ;
+    }
+   
+    int partition = sort(arr,start,end);
+    quicksort(arr,start, partition- 1 );
+    quicksort(arr,partition+1,end );
+    
+}
+
+int main()
+{
+    int arr[5]={4,8,1,9,3};
+    
+    quicksort(arr,0,4);
+    
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        cout<<arr[i] ; 
+    }
+    
+    return 0;
+}
