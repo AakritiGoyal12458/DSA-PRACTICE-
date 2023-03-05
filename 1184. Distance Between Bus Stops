@@ -8,7 +8,7 @@ public:
         {
             total=total+distance[i];
         }
-        //clockwise fdjfdf
+        //clockwise __
         if (start<destination)
         {
             for (int i=start ; i<destination;i++)
