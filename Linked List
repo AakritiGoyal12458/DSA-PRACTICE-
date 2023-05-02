@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std ;
+
+class Node
+{
+    public :
+        int data ; 
+        Node* next ; //as pointer points to a node so node ptr next
+        
+    
+    Node(int data ) //constructor 
+    {
+        this->data=data;
+        this->next=NULL;
+    }
+};
+//insert in begining 
+void insertAtHead(Node *&head ,int data)//we use & as we dont want to create a new node by copying node we wnat cahnge in original ll 
+{
+    Node *temp= new Node(data);
+    temp->next=head;
+    head= temp ;
+}
+
+//insert at end 
+void insertAtTail(Node *&tail ,int data )
+{
+    Node *temp = new Node(data);
+    tail->next = temp ; 
+    tail = temp ; 
+}
+
+//insert in middle of Node
+void insertInMiddle(int position , int data ,Node *&head)
+{
+    //we need to travel till position 3 
+    int count = 1 ; //as pointer is alreday pointing head
+    Node *temp = head ; 
+    while(count<position-1 )
+    {
+        temp=temp->next;
+        count++; 
+    }
+    
+    Node* node = new Node(data);
+    
+    node->next=temp->next;
+    temp->next=node; 
+}
+
+//print == traverse
+void print(Node *&head)
+{
+    Node *temp = head ; 
+    while(temp !=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp = temp->next ;
+    }
+    cout<<endl;
+}
+int main()
+{
+    Node* node = new Node(10);
+    // cout<<node->data<<endl;
+    // cout<<node->next;
+    Node *head=node; 
+    Node *tail=node; 
+    print(head);
+    insertAtHead(head,12);
+    print(head);
+    insertAtTail(tail,8);
+    print(head);
+    insertInMiddle(2,5,head);
+    print(head);
+    //base case 1 : insert at 1st place 
+    insertInMiddle(1,9,head);
+    print(head);
+}
