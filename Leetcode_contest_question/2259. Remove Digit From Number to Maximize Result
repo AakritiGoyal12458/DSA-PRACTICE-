@@ -1,0 +1,39 @@
+string delete_digit(string number , char digit,int index)
+{
+    string new_number; 
+    //321 , 3 --> 21 
+    
+    for(int i = 0 ; i< number.length();i++)
+    {
+        if(i!=index)
+        {
+            new_number.push_back(number[i]);
+        }
+    }
+    
+    return new_number;
+    
+}
+
+
+class Solution {
+public:
+    string removeDigit(string number, char digit) {
+        
+        int maximum=0;
+        int new_number ;
+        string str ;
+        for(int i = 0 ; i< number.length();i++)
+        {
+            if(number[i]==digit)
+            { 
+                str=(delete_digit(number,digit,i));
+                new_number = stoi(str);
+                 
+                maximum=max(new_number,maximum);
+            }
+            
+        }       
+        return to_string(maximum);
+    }
+};
