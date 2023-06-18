@@ -1,0 +1,92 @@
+/*************************************************
+    
+    class Node {
+        public :
+
+        int data;
+        Node *next;
+
+        Node(int data) {
+            this -> data = data;
+            this -> next = NULL;
+        }
+    };
+
+*************************************************/
+
+
+//detect a loop 
+
+
+//floyd method 
+Node* floyd_detect_a_loop(Node* head)
+{
+    if(head==NULL)
+    {
+        return NULL ;
+    }
+    Node* slow = head ; 
+    Node* fast = head ; 
+    
+    while(slow!=NULL and fast!=NULL)
+    {
+        
+        slow=slow->next ;
+        fast=fast->next ; 
+        
+        if(fast!=NULL)
+        {
+            fast=fast->next; 
+        }
+        //cout<<slow->data<< " is slow "  <<endl;
+        //cout<<fast->data<< " is fast " << endl ;
+        if(slow==fast)
+        {
+            //cout<<"loop at "<<fast->data<<endl; 
+            return fast;
+        }
+        
+    }
+    return NULL ; 
+
+}
+
+Node* detect_strating_node_of_ffloyd(Node* head)
+{
+    if(head==NULL || floyd_detect_a_loop(head)==NULL)
+    {
+        return NULL; 
+    }
+    
+    Node* fast = floyd_detect_a_loop(head) ; 
+    Node* slow = head ; 
+    
+    
+    while(slow!=fast)
+    {
+        slow = slow->next;
+        fast = fast->next ;
+
+    }
+    return slow; 
+}
+
+
+
+Node *removeLoop(Node *head)
+{
+    if(head==NULL || detect_strating_node_of_ffloyd(head)==NULL)
+    {
+        return head; 
+    }
+     Node* starting_Node = detect_strating_node_of_ffloyd(head); 
+    Node* temp = starting_Node ; 
+    
+    while(temp->next!=starting_Node)
+    {
+        temp=temp->next ; 
+    }
+    temp->next=NULL; 
+    return head ; 
+
+}
