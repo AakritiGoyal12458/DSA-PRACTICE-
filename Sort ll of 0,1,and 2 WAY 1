@@ -1,0 +1,78 @@
+/*
+Following is the class structure of the Node class:
+
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node()
+    {
+        this->data = 0;
+        next = NULL;
+    }
+    Node(int data)
+    {
+        this->data = data; 
+        this->next = NULL;
+    }
+    Node(int data, Node* next)
+    {
+        this->data = data;
+        this->next = next;
+    }
+};
+*/
+
+Node* sortList(Node *head){
+    // approach one : count number of element and then append
+    int count_zero = 0 ;
+    int count_one=0 ; 
+    int count_two = 0 ; 
+    Node* curr = head ; 
+    // 1 0 2 1 0 2 1 
+    while(curr!=NULL)
+    {
+        if(curr->data == 0 )
+        {
+            count_zero++;
+        }
+        else if(curr->data == 1)
+        {
+            count_one++;
+        }
+        else if(curr->data == 2)
+        {
+            count_two++;
+        }
+
+        curr=curr->next ; 
+    }
+
+    curr = head ; 
+
+    while(true)
+    {
+        if(count_zero!=0)
+        {
+            curr->data=0 ; 
+            count_zero--;
+        }
+        else if(count_one!=0)
+        {
+            curr->data=1 ;
+            count_one--;
+        }
+        else if(count_two!=0)
+        {
+            curr->data=2 ;
+            count_two--;
+        }
+        else
+        {
+            return head; 
+        }
+
+        curr=curr->next ; 
+    }
+}
