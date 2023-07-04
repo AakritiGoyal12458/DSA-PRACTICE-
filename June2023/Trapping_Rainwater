@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int max_left=INT_MIN;
+        int max_right=INT_MIN;
+        int size=height.size();
+        int sum = 0 ;
+
+        for(int i=0 ; i<size;i++)
+        {
+            max_left=max(max_left,height[i]);
+            cout<<max_left<<" is maxleft at i = "<<i <<endl; 
+            max_right=INT_MIN;
+            for(int j=i;j<size;j++)
+            {
+                max_right = max(max_right,height[j]);
+                
+            }
+            cout<<max_right<<" is max_right at j = "<<endl ; 
+
+            sum+=min(max_left,max_right)-height[i];
+            
+        }
+    return sum ; 
+    }
+};
