@@ -1,0 +1,33 @@
+
+class Solution {
+public:
+    int numSubarrayBoundedMax(vector<int>& nums, int left, int right) {
+        //pointers 
+        int start = 0 ;
+        int end = 0 ; 
+        int count = 0 ;
+        int m = 0 ;
+
+        while(start<nums.size()&& end<nums.size())
+        {
+            if(nums[end]<left)
+            {
+                count=count+m;
+                end++;
+            }
+            else if(nums[end]>=left && nums[end]<=right)
+            {
+                m=end-start+1;
+                count=count+m;
+                end++;
+            }
+            else 
+            {
+                m=0;
+                start=end+1;
+                end=end+1;
+            }
+        }
+        return count ; 
+    }
+};
