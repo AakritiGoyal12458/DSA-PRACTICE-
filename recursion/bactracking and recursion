@@ -1,0 +1,94 @@
+
+#include <iostream>
+using namespace std;
+//print linearly from n to 1 backtracking 
+
+void print_number(int number ,int i   )
+{
+  
+ if(i>number)
+    {
+        return;
+    }
+    print_number(number,i+1);  
+    cout<<i<<endl;
+}
+int main()
+{
+    int number = 9 ; 
+    print_number(number,1);
+    return 0;
+}
+
+
+//print linearly from 1 to n backtracking 
+// void print_n(int i , int n )
+// {
+//     if(i<1)
+//     {
+//         return ; 
+//     }
+//     print_n(i-1, n );
+//     cout<<i<<endl; 
+// }
+// int main()
+// {
+//     int number = 9 ; 
+//     print_n(number,number);
+//     return 0;
+// }
+
+//print linearly from n to 1 recursion
+// void print_number(int number  )
+// {
+//  if(number<=0)
+//     {
+//         return;
+//     }
+//     cout<<number<<endl;
+//     print_number(number-1);   
+// }
+// int main()
+// {
+//     int number = 9 ; 
+//     print_number(number);
+//     return 0;
+// }
+
+
+//print linearly from 1 to n recursion
+// void print_number(int number , int i )
+// {
+//  if(i>number)
+//     {
+//         return;
+//     }
+//     cout<<i<<endl;
+//     print_number(number,i+1);   
+// }
+// int main()
+// {
+//     int number = 9 ; 
+//     print_number(number,1);
+//     return 0;
+// }
+
+//print a number 5 time with reucrison
+// void print_number(int number,int i ){
+//     if(i>=number)
+//     {
+//         return;
+//     }
+//     cout<<number<<endl;
+//     print_number(number,i+1);
+// }
+
+// int main()
+// {
+//     int number = 9 ; 
+//     print_number(number,0);
+//     return 0;
+// }
+//TC=O(n) //as we only call the function n times and inside it there are O(1)complexity 
+//SC:stack space = O(n)
+
