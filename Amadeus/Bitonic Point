@@ -1,0 +1,95 @@
+https://practice.geeksforgeeks.org/problems/maximum-value-in-a-bitonic-array3001/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//O(logn) ": binary search 
+class Solution{
+public:
+	
+	int findmax(int arr[], int start, int end){
+	    int mid = start + (end - start)/2 ; 
+	    //check for one element 
+	    if(start==end)
+	    {
+	        return arr[start] ; 
+	    }
+	    //check for 2 element
+	    if(end==start+1 && arr[start]>arr[end] )
+	    {
+	        return arr[start];
+	    }
+	     if(end==start+1 && arr[end]>arr[start] )
+	    {
+	        return arr[end];
+	    }
+	    
+	    if(arr[mid]>arr[mid+1] && arr[mid]>arr[mid-1])
+	    {
+	        return arr[mid]; 
+	    }
+	    else if(arr[mid]>arr[mid+1] && arr[mid]<arr[mid-1])
+	    {
+	        findmax(arr,start,mid-1);
+	    }
+	    else if(arr[mid]<arr[mid+1] && arr[mid]>arr[mid-1])
+	    {
+	        findmax(arr,mid+1,end);
+	    }
+	}
+	int findMaximum(int arr[], int n) {
+	    // code here
+	    //binary serach 
+	    int start = 0 ; 
+	    int end = n-1;
+	    
+	    
+	    return findmax(arr,start,end);
+	    
+	}
+};
+
+
+
+//O(n) linear search 
+//User function template for C++
+class Solution{
+public:
+	
+	int findmax(int arr[], int start, int end){
+	    int mid = start + (end - start)/2 ; 
+	    //check for one element 
+	    if(start==end)
+	    {
+	        return arr[start] ; 
+	    }
+	    //check for 2 element
+	    if(end==start+1 && arr[start]>arr[end] )
+	    {
+	        return arr[start];
+	    }
+	     if(end==start+1 && arr[end]>arr[start] )
+	    {
+	        return arr[end];
+	    }
+	    
+	    if(arr[mid]>arr[mid+1] && arr[mid]>arr[mid-1])
+	    {
+	        return arr[mid]; 
+	    }
+	    else if(arr[mid]>arr[mid+1] && arr[mid]<arr[mid-1])
+	    {
+	        findmax(arr,start,mid-1);
+	    }
+	    else if(arr[mid]<arr[mid+1] && arr[mid]>arr[mid-1])
+	    {
+	        findmax(arr,mid+1,end);
+	    }
+	}
+	int findMaximum(int arr[], int n) {
+	    // code here
+	    //binary serach 
+	    int start = 0 ; 
+	    int end = n-1;
+	    
+	    
+	    return findmax(arr,start,end);
+	    
+	}
+};
