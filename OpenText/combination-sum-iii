@@ -1,0 +1,44 @@
+https://leetcode.com/problems/combination-sum-iii/
+
+class Solution {
+public:
+
+    void valid_output(int k, int n ,vector<bool> &visited ,vector<int> &ans, vector<vector<int>> &final_ans , int visiting_index)
+    {
+        if(n==0 && k==0)
+        {
+            final_ans.push_back(ans);
+            return ;
+        }
+        if(n<=0 && k<=0)
+        {
+            return ;
+        }
+for(int i = visiting_index ; i<=9;i++ ){
+        if(!visited[i])
+        {
+            visited[i]=true ; 
+            ans.push_back(i);
+            valid_output(k-1,n-i,visited,ans,final_ans,i+1);  
+            ans.pop_back();
+            visited[i]=false ;
+        }
+}
+
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        
+        vector<int> ans;
+        vector<vector<int>> final_ans;
+        if(k*9<n)
+        {
+             return final_ans; 
+        }
+        vector<bool> visited(10,false);
+
+        valid_output(k,n,visited,ans,final_ans,1);
+
+        return final_ans; 
+
+    }
+};
