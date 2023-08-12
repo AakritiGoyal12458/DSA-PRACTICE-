@@ -1,0 +1,35 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+int minumum_suarray(int *arr,int P,int n)
+{
+    int i = 0 ;
+    int j=0;
+ 
+    int curr_product=1;
+    int win_size=INT_MAX;
+    while(i<n)
+    {
+        while(j<n && curr_product<P)
+        {
+            curr_product*=arr[j];
+            j++;
+        }
+        if(curr_product>=P){
+        win_size=min(win_size,j-i);
+        cout<<win_size<<endl;
+        }
+        curr_product/=arr[i];
+        i++; 
+        
+    }
+    return win_size;
+}
+int main()
+{
+    int arr[6]={1,2,3,4,5,6};
+    int P=20;
+    int n=sizeof(arr)/sizeof(arr[0]);
+    cout<<minumum_suarray(arr,P,n);
+    return 0;
+}
