@@ -1,0 +1,72 @@
+
+#include <iostream>
+
+using namespace std;
+
+class Node
+{
+    public:
+        int data ;
+        Node *next;
+  
+    // Parameterised Constructor
+    Node(int data)
+    {
+        this->data = data;
+        this->next = NULL;
+    }
+    
+};
+//stack : push (at tail) , pop(tail remove ), top (tail), print (tail to head )
+class Stack
+{
+public: 
+    Node* node1 = new Node(0);
+    Node *head = node1;
+    Node *tail = node1;
+   void push(int num )
+    {
+        Node* temp = new Node(num);
+        tail->next=temp; 
+        tail=temp;
+    } 
+    void print()
+    {
+        Node *temp = head; 
+        temp=temp->next;
+        while(temp!=NULL)
+        {
+            cout<<temp->data<<" ";
+            temp=temp->next;
+        }
+        cout<< endl;
+    }
+    void pop()
+    {
+        Node *temp = head; 
+        while(temp->next!=tail)
+        {
+            temp=temp->next;
+        }
+        temp->next=NULL;
+        tail=temp;
+    }
+    
+};
+
+
+int main()
+{
+    Stack s;
+    s.push(9);
+    s.push(8);
+    s.push(7);
+    s.push(6);
+    s.push(5);
+    s.print();
+    s.pop();
+    s.print();
+    s.pop();
+    s.print();
+    return 0;
+}
