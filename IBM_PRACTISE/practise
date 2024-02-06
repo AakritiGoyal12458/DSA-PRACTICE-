@@ -1,0 +1,94 @@
+
+#include <iostream>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+
+using namespace std;
+
+bool isAlphanumeric(const string& str) {
+    return all_of(str.begin(), str.end(), [](char c) {
+        return isalnum(c);
+    });
+}
+
+vector<string> getResponses(vector<string> valid_auth_tokens, vector<vector<string>> requests) {
+    vector<string> responses;
+
+    for (const auto& request : requests) {
+        string auth_token;
+        string csrf_token;
+        string params = "INVALID";
+
+        string url = request[1];
+        size_t pos = url.find('?');
+        if (pos != string::npos) {
+            istringstream iss(url.substr(pos + 1));
+            string param;
+            while (getline(iss, param, '&')) {
+                size_t eq_pos = param.find('=');
+                string key = param.substr(0, eq_pos);
+                string value = param.substr(eq_pos + 1);
+                if (key == "token") {
+                    auth_token = value;
+                } else if (key == "csrf") {
+                    csrf_token = value;
+                }
+            }
+        }
+
+        if (find(valid_auth_tokens.begin(), valid_auth_tokens.end(), auth_token) != valid_auth_tokens.end()) {
+            if (request[0] == "POST") {
+                if (!csrf_token.empty() && csrf_token.size() >= 8 && isAlphanumeric(csrf_token)) {
+                    params = "VALID";
+                }
+            } else {
+                params = "VALID";
+            }
+        }
+
+        if (params == "VALID") {
+            istringstream iss(url.substr(pos + 1));
+            string param;
+            while (getline(iss, param, '&')) {
+                size_t eq_pos = param.find('=');
+                string key = param.substr(0, eq_pos);
+                string value = param.substr(eq_pos + 1);
+                if (key != "token" && key != "csrf") {
+                    params += "," + key + "," + value;
+                }
+            }
+        }
+
+        responses.push_back(params);
+    }
+
+    string result = "[";
+    for (size_t i = 0; i < responses.size(); ++i) {
+        result += "\"" + responses[i] + "\"";
+        if (i != responses.size() - 1) {
+            result += ", ";
+        }
+    }
+    result += "]";
+
+    return {result};
+}
+
+int main() {
+    vector<string> valid_auth_tokens = {"et51usi9p1q7", "r5b019lmlp09"};
+    vector<vector<string>> requests = {
+        {"GET", "https://example.com/?token=et51usi9p1q7&id=2e3rt&name=alex"},
+        {"POST", "https://example.com/?token=r5b019lmlp09&csrf=ia+09&id=us8we&name=evan"},
+    };
+
+    vector<string> responses = getResponses(valid_auth_tokens, requests);
+
+    cout << "Responses: ";
+    for (const auto& response : responses) {
+        cout << response << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
