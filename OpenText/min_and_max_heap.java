@@ -5,6 +5,8 @@ public class Main
 {
 	public static void main(String[] args) {
 	    PriorityQueue<Integer> pq= new PriorityQueue();
+	//PriorityQueue<Integer> pq= new PriorityQueue(Collections.reverseOrder());//max heap
+
 	    
 	    pq.add(1);
 	    pq.add(-8);
